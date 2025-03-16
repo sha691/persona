@@ -4,31 +4,7 @@
 <script>
 // Add this JavaScript to handle test initiation
 document.addEventListener('DOMContentLoaded', () => {
-    const startTestButton = document.querySelector('.cta-button');
-    
-    startTestButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        // Hide homepage sections
-        document.querySelector('.hero').style.display = 'none';
-        document.querySelector('.personality-section').style.display = 'none';
-        document.querySelector('.features').style.display = 'none';
-        document.querySelector('.testimonials').style.display = 'none';
-        
-        // Show test section
-        document.getElementById('test-section').style.display = 'block';
-        
-        // Initialize test
-        initializeTest();
-    });
-});
-</script>
-
-<!-- Add this Test Section at the bottom of your homepage -->
-<section id="test-section" style="display: none;">
-    <!-- Paste your entire test/questionnaire HTML here -->
-    <!-- (The question container, progress bar, etc. from previous implementations) -->
-</section>
+    const startTestButton = document.querySelector('.cta-button')
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
