@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover your true personality with our comprehensive personality test. Answer simple questions to reveal your key personality traits.">
+    <title>Personality Trait Analyzer | Discover Your True Self</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AdSense Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+    crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --background: #f8fafc;
+            --text: #1e293b;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .main-content {
+            display: grid;
+            gap: 2rem;
+        }
+
+        /* Question Card */
+        .question-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background: #e2e8f0;
+            border-radius: 50px;
+            margin: 2rem 0;
+            height: 12px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 50px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Answer Options */
+        .answer-option {
+            padding: 1.25rem;
+            margin: 0.75rem 0;
+            background: var(--card-bg);
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .answer-option:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Results Section */
+        .results {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .trait-result {
+            padding: 1.5rem;
+            margin: 1rem 0;
+            background: var(--background);
+            border-radius: 12px;
+        }
+
+        /* Advertisements */
+        .ad-container {
+            margin: 2rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .main-content {
+                grid-template-columns: 3fr 1fr;
+            }
+            
+            header {
+                padding: 4rem 1rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .question-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Discover Your Personality</h1>
+        <p class="mb-4">Take our 5-minute test to uncover your core traits</p>
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 0%"></div>
+        </div>
+    </header>
+
+    <!-- Top Ad -->
+    <div class="container ad-container">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+            data-ad-slot="XXXXXXXXXX"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+    </div>
+
+    <main class="container">
+        <div class="main-content">
+            <section class="test-section">
+                <div id="question-container" class="question-card"></div>
+                
+                <div class="results" id="results">
+                    <h2 class="text-center">Your Personality Breakdown</h2>
+                    <div id="trait-results"></div>
+                </div>
+            </section>
+
+            <!-- Sidebar Ad -->
+            <aside class="ad-container">
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                    data-ad-slot="XXXXXXXXXX"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+            </aside>
+        </div>
+    </main>
+
+    <script>
+        // Enhanced Question Data
+        const questions = [
+            {
+                question: "How do you typically recharge your energy?",
+                answers: [
+                    { text: "Quiet time alone", trait: "introversion" },
+                    { text: "Social gatherings", trait: "extroversion" },
+                    { text: "Trying something new", trait: "openness" }
+                ],
+                icon: "🔋"
+            },
+            {
+                question: "When making decisions, you tend to:",
+                answers: [
+                    { text: "Analyze all possibilities", trait: "conscientiousness" },
+                    { text: "Go with your gut feeling", trait: "openness" },
+                    { text: "Consider others' opinions", trait: "agreeableness" }
+                ],
+                icon: "🤔"
+            }
+            // Add more questions
+        ];
+
+        let currentQuestion = 0;
+        let userTraits = {};
+        const totalQuestions = questions.length;
+
+        function initializeTest() {
+            showQuestion(currentQuestion);
+            updateProgress();
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+
+        function showQuestion(index) {
+            const container = document.getElementById('question-container');
+            const question = questions[index];
+            
+            let html = `
+                <h3>${question.icon} ${question.question}</h3>
+                <div class="answer-grid">
+                    ${question.answers.map((answer, i) => `
+                        <div class="answer-option" onclick="selectAnswer(${i}, ${index})">
+                            ${answer.text}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        function selectAnswer(answerIndex, questionIndex) {
+            const trait = questions[questionIndex].answers[answerIndex].trait;
+            userTraits[trait] = (userTraits[trait] || 0) + 1;
+            
+            // Add visual feedback
+            event.target.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                event.target.style.transform = '';
+            }, 100);
+
+            currentQuestion++;
+            if (currentQuestion < totalQuestions) {
+                setTimeout(() => {
+                    showQuestion(currentQuestion);
+                    updateProgress();
+                }, 300);
+            } else {
+                showResults();
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.querySelector('.progress-bar').style.width = `${progress}%`;
+        }
+
+        function showResults() {
+            document.getElementById('question-container').style.display = 'none';
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.style.display = 'block';
+            
+            const sortedTraits = Object.entries(userTraits)
+                .sort((a, b) => b[1] - a[1]);
+
+            let resultsHTML = sortedTraits.map(([trait, score]) => `
+                <div class="trait-result">
+                    <h3>${trait.charAt(0).toUpperCase() + trait.slice(1)}</h3>
+                    <div class="trait-progress">
+                        <div class="progress-bar" style="width: ${(score/totalQuestions)*100}%"></div>
+                    </div>
+                    <p>${getTraitDescription(trait)}</p>
+                </div>
+            `).join('');
+            
+            document.getElementById('trait-results').innerHTML = resultsHTML;
+        }
+
+        function getTraitDescription(trait) {
+            const descriptions = {
+                extroversion: "You thrive in social situations and gain energy from interactions with others.",
+                introversion: "You prefer deep connections and recharge through solitude and reflection.",
+                openness: "You crave new experiences and enjoy creative, abstract thinking.",
+                conscientiousness: "You value organization, reliability, and careful planning.",
+                agreeableness: "You prioritize harmony and enjoy helping others achieve their goals."
+            };
+            return descriptions[trait] || "This is a significant aspect of your personality profile.";
+        }
+
+        window.onload = initializeTest;
+    </script>
+</body>
+</html>
