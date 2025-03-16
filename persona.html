@@ -3,334 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content=". know yourself and go beast mode.">
-    <title> know your worth | unlock your potential </title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- AdSense Script -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=pub-3110073854718317"
-    crossorigin="anonymous"></script>
-
+    <meta name="description" content="Discover your true personality with our fun and insightful personality test. Explore 16 unique personality types and find out who you really are!">
+    <title>PersonaQuest - Discover Your Personality</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #6366f1;
             --secondary: #4f46e5;
-            --background: #f8fafc;
-            --text: #1e293b;
-            --card-bg: #ffffff;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background: var(--background);
-            color: var(--text);
-            line-height: 1.5;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
         }
 
-        header {
+        /* Header Styles */
+        .hero {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 2rem 1rem;
+            padding: 6rem 1rem;
             text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .container {
+        .hero-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .main-content {
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Personality Types Section */
+        .personality-section {
+            padding: 4rem 1rem;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+        }
+
+        .personality-grid {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* Question Card */
-        .question-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 1rem 0;
+        .personality-card {
+            background: var(--light);
+            border-radius: 1rem;
+            overflow: hidden;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
-        /* Progress Bar */
-        .progress-container {
-            width: 100%;
-            background: #e2e8f0;
-            border-radius: 50px;
-            margin: 2rem 0;
-            height: 12px;
+        .personality-card:hover {
+            transform: translateY(-10px);
         }
 
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 50px;
-            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Answer Options */
-        .answer-option {
-            padding: 1.25rem;
-            margin: 0.75rem 0;
-            background: var(--card-bg);
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-weight: 500;
-        }
-
-        .answer-option:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary);
-            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2);
-        }
-
-        /* Results Section */
-        .results {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.5s ease;
-        }
-
-        .trait-result {
-            padding: 1.5rem;
-            margin: 1rem 0;
-            background: var(--background);
-            border-radius: 12px;
-        }
-
-        /* Advertisements */
-        .ad-container {
-            margin: 2rem 0;
-            border-radius: 12px;
+        .card-image {
+            height: 200px;
+            position: relative;
             overflow: hidden;
         }
 
-        /* Responsive Design */
-        @media (min-width: 768px) {
-            .main-content {
-                grid-template-columns: 3fr 1fr;
-            }
-            
-            header {
-                padding: 4rem 1rem;
-            }
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
         }
 
-        @media (max-width: 767px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .question-card {
-                padding: 1.5rem;
-            }
+        .personality-card:hover .card-image img {
+            transform: scale(1.1);
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Typography */
-        h1 {
-            font-size: 2.5rem;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--text);
-        }
-
-        /* Utility Classes */
-        .text-center {
+        .card-content {
+            padding: 1.5rem;
             text-align: center;
         }
 
-        .mb-4 {
-            margin-bottom: 2rem;
+        .card-content h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 1rem;
+            background: var(--light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 1rem;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 4rem 1rem;
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Discover Your Personality</h1>
-        <p class="mb-4">Take our 5-minute test to uncover your core traits</p>
-        <div class="progress-container">
-            <div class="progress-bar" style="width: 0%"></div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover Your True Personality</h1>
+            <p>Take our fun and insightful personality test to uncover your unique traits and strengths.</p>
+            <a href="#start" class="cta-button">Start Free Test</a>
         </div>
-    </header>
+    </section>
 
-    <!-- Top Ad -->
-    <div class="container ad-container">
-        <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="pub-3110073854718317"
-            data-ad-slot="XXXXXXXXXX"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-    </div>
-
-    <main class="container">
-        <div class="main-content">
-            <section class="test-section">
-                <div id="question-container" class="question-card"></div>
-                
-                <div class="results" id="results">
-                    <h2 class="text-center">Your Personality Breakdown</h2>
-                    <div id="trait-results"></div>
+    <!-- Personality Types Section -->
+    <section class="personality-section">
+        <h2 class="section-title">Explore 16 Personality Types</h2>
+        <div class="personality-grid">
+            <!-- Personality Card 1 -->
+            <div class="personality-card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="The Leader">
                 </div>
-            </section>
+                <div class="card-content">
+                    <h3>The Leader</h3>
+                    <p>Confident, decisive, and goal-oriented</p>
+                </div>
+            </div>
 
-            <!-- Sidebar Ad -->
-            <aside class="ad-container">
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="pub-3110073854718317"
-                    data-ad-slot="XXXXXXXXXX"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-            </aside>
+            <!-- Personality Card 2 -->
+            <div class="personality-card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="The Innovator">
+                </div>
+                <div class="card-content">
+                    <h3>The Innovator</h3>
+                    <p>Creative, curious, and visionary</p>
+                </div>
+            </div>
+
+            <!-- Add more personality cards here -->
         </div>
-    </main>
+    </section>
 
-    <script>
-        // Enhanced Question Data
-        const questions = [
-            {
-                question: "How do you typically recharge your energy?",
-                answers: [
-                    { text: "Quiet time alone", trait: "introversion" },
-                    { text: "Social gatherings", trait: "extroversion" },
-                    { text: "Trying something new", trait: "openness" }
-                ],
-                icon: "🔋"
-            },
-            {
-                question: "When making decisions, you tend to:",
-                answers: [
-                    { text: "Analyze all possibilities", trait: "conscientiousness" },
-                    { text: "Go with your gut feeling", trait: "openness" },
-                    { text: "Consider others' opinions", trait: "agreeableness" }
-                ],
-                icon: "🤔"
-            }
-            // Add more questions
-        ];
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Why Choose Us?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h4>Scientific Accuracy</h4>
+                <p>Based on proven psychological models</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h4>Personalized Results</h4>
+                <p>Get insights tailored to your unique traits</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💡</div>
+                <h4>Actionable Advice</h4>
+                <p>Practical tips for personal growth</p>
+            </div>
+        </div>
+    </section>
 
-        let currentQuestion = 0;
-        let userTraits = {};
-        const totalQuestions = questions.length;
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2 class="section-title">What People Are Saying</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"This test completely changed how I see myself. Highly recommend!"</p>
+                <div class="testimonial-author">- Sarah L.</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"The results were spot-on and incredibly insightful."</p>
+                <div class="testimonial-author">- John D.</div>
+            </div>
+        </div>
+    </section>
 
-        function initializeTest() {
-            showQuestion(currentQuestion);
-            updateProgress();
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        }
-
-        function showQuestion(index) {
-            const container = document.getElementById('question-container');
-            const question = questions[index];
-            
-            let html = `
-                <h3>${question.icon} ${question.question}</h3>
-                <div class="answer-grid">
-                    ${question.answers.map((answer, i) => `
-                        <div class="answer-option" onclick="selectAnswer(${i}, ${index})">
-                            ${answer.text}
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-            
-            container.innerHTML = html;
-        }
-
-        function selectAnswer(answerIndex, questionIndex) {
-            const trait = questions[questionIndex].answers[answerIndex].trait;
-            userTraits[trait] = (userTraits[trait] || 0) + 1;
-            
-            // Add visual feedback
-            event.target.style.transform = 'scale(0.98)';
-            setTimeout(() => {
-                event.target.style.transform = '';
-            }, 100);
-
-            currentQuestion++;
-            if (currentQuestion < totalQuestions) {
-                setTimeout(() => {
-                    showQuestion(currentQuestion);
-                    updateProgress();
-                }, 300);
-            } else {
-                showResults();
-            }
-        }
-
-        function updateProgress() {
-            const progress = (currentQuestion / totalQuestions) * 100;
-            document.querySelector('.progress-bar').style.width = `${progress}%`;
-        }
-
-        function showResults() {
-            document.getElementById('question-container').style.display = 'none';
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.style.display = 'block';
-            
-            const sortedTraits = Object.entries(userTraits)
-                .sort((a, b) => b[1] - a[1]);
-
-            let resultsHTML = sortedTraits.map(([trait, score]) => `
-                <div class="trait-result">
-                    <h3>${trait.charAt(0).toUpperCase() + trait.slice(1)}</h3>
-                    <div class="trait-progress">
-                        <div class="progress-bar" style="width: ${(score/totalQuestions)*100}%"></div>
-                    </div>
-                    <p>${getTraitDescription(trait)}</p>
-                </div>
-            `).join('');
-            
-            document.getElementById('trait-results').innerHTML = resultsHTML;
-        }
-
-        function getTraitDescription(trait) {
-            const descriptions = {
-                extroversion: "You thrive in social situations and gain energy from interactions with others.",
-                introversion: "You prefer deep connections and recharge through solitude and reflection.",
-                openness: "You crave new experiences and enjoy creative, abstract thinking.",
-                conscientiousness: "You value organization, reliability, and careful planning.",
-                agreeableness: "You prioritize harmony and enjoy helping others achieve their goals."
-            };
-            return descriptions[trait] || "This is a significant aspect of your personality profile.";
-        }
-
-        window.onload = initializeTest;
-    </script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 PersonaQuest. All rights reserved.</p>
+    </footer>
 </body>
 </html>
